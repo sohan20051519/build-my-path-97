@@ -9,6 +9,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Search, Eye, Star, CheckCircle, ArrowRight } from "lucide-react";
 import { templates } from "@/data/templates";
 import { Template } from "@/types/template";
+import { ResumeData } from "@/types/resume";
+
+// Import template components
+import TimelessProfessional from "@/components/resume/templates/TimelessProfessional";
+import MinimalistExpert from "@/components/resume/templates/MinimalistExpert";
 
 export default function Templates() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -155,38 +160,67 @@ interface TemplateCardProps {
   featured?: boolean;
 }
 
+const dummyResumeData: ResumeData = {
+  personalInfo: {
+    name: "Alex Doe",
+    jobTitle: "Software Engineer",
+    email: "alex.doe@example.com",
+    phone: "123-456-7890",
+    address: "123 Tech Street, Silicon Valley, CA",
+    linkedin: "linkedin.com/in/alex-doe",
+    website: "alexdoe.com",
+    fullName: "Alex Doe",
+  },
+  professionalSummary: "Innovative Software Engineer with 5+ years of experience in developing, testing, and maintaining web applications. Proficient in JavaScript, React, and Node.js. Passionate about creating responsive and user-friendly interfaces.",
+  experience: [
+    {
+      id: "exp1",
+      jobTitle: "Senior Frontend Developer",
+      company: "Tech Solutions Inc.",
+      location: "San Francisco,CA",
+      startDate: "2021-01-01",
+      endDate: "Present",
+      description: "Led the development of a new e-commerce platform, resulting in a 30% increase in sales.\nCollaborated with UX/UI designers to implement a new design system."
+    },
+  ],
+  education: [
+    {
+      id: "edu1",
+      degree: "B.S. in Computer Science",
+      school: "University of Technology",
+      location: "Berkeley, CA",
+      graduationDate: "2018-12-31",
+    }
+  ],
+  skills: [
+    { id: "skill1", name: "JavaScript" },
+    { id: "skill2", name: "React" },
+    { id: "skill3", name: "Node.js" },
+    { id: "skill4", name: "TypeScript" },
+  ]
+};
+
+const templateComponents: { [key: string]: React.ComponentType<{ data: ResumeData, isPreview?: boolean }> } = {
+  "timeless-professional": TimelessProfessional,
+  "minimalist-expert": MinimalistExpert,
+};
+
 const TemplateCard = ({ template, featured = false }: TemplateCardProps) => {
+  const TemplateComponent = templateComponents[template.id];
+
   return (
     <Card variant={featured ? "elevated" : "glass"} className={`interactive-glass group hover:shadow-elevation-4 transition-smooth ${featured ? 'ring-2 ring-primary/30' : ''}`}>
       <CardHeader className="p-0">
         <div className="relative overflow-hidden rounded-t-lg bg-surface-container aspect-[3/4]">
           {/* Template Preview */}
-          <img 
-            src={template.preview} 
-            alt={`${template.name} template preview`}
-            loading="lazy"
-            className="w-full h-full object-cover"
-            onError={(e) => {
-              // Fallback to placeholder if image fails to load
-              const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
-              const fallback = target.nextElementSibling as HTMLElement;
-              if (fallback) fallback.style.display = 'flex';
-            }}
-          />
-          
-          {/* Fallback placeholder */}
-          <div className="w-full h-full bg-gradient-neu flex items-center justify-center" style={{ display: 'none' }}>
-            <div className="text-center p-6">
-              <div className="w-full h-2 bg-primary/20 rounded mb-2"></div>
-              <div className="w-3/4 h-2 bg-primary/10 rounded mb-4 mx-auto"></div>
-              <div className="space-y-1 mb-4">
-                <div className="w-full h-1 bg-on-surface-variant/20 rounded"></div>
-                <div className="w-5/6 h-1 bg-on-surface-variant/20 rounded"></div>
-                <div className="w-4/6 h-1 bg-on-surface-variant/20 rounded"></div>
+          <div className="absolute inset-0 transform scale-[0.2] origin-top-left bg-white">
+            {TemplateComponent ? (
+              <TemplateComponent data={dummyResumeData} isPreview={true} />
+            ) : (
+              <div className="w-full h-full bg-gradient-neu flex items-center justify-center">
+                <p className="text-on-surface-variant">Preview not available</p>
               </div>
-              <div className="w-1/2 h-1 bg-primary/30 rounded mx-auto"></div>
-            </div>
+            )}
           </div>
           
           {/* Overlay */}

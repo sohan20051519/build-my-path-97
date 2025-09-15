@@ -20,9 +20,9 @@ All colors MUST be HSL for proper Material 3 dynamic theming
     /* Material 3 Content Colors */
     --foreground: 240 15% 9%;
     --on-surface: 240 15% 9%;
-    --on-surface-variant: 240 6% 46%;
-    --outline: 240 4% 63%;
-    --outline-variant: 240 6% 81%;
+    --on-surface-variant: 240 8% 38%;
+    --outline: 240 5% 58%;
+    --outline-variant: 240 8% 78%;
 
     /* Material 3 Primary Colors - Dynamic Purple-Blue */
     --primary: 258 89% 66%;
@@ -66,14 +66,14 @@ All colors MUST be HSL for proper Material 3 dynamic theming
     /* Neumorphism Colors - Enhanced Contrast */
     --neu-base: 240 12% 94%;
     --neu-light: 240 20% 98%;
-    --neu-dark: 240 8% 75%;
+    --neu-dark: 240 8% 88%;
     --neu-highlight: 0 0% 100%;
-    --neu-shadow: 240 35% 65%;
+    --neu-shadow: 240 10% 65%;
 
     /* Glassmorphism - Enhanced Visibility */
-    --glass-bg: 240 15% 96% / 0.9;
-    --glass-border: 240 20% 85% / 0.3;
-    --glass-shadow: 240 25% 15% / 0.2;
+    --glass-bg: 240 15% 96% / 0.6;
+    --glass-border: 240 20% 99% / 0.4;
+    --glass-shadow: 240 35% 15% / 0.1;
     --glass-backdrop-blur: blur(16px);
 
     /* Material 3 Enhanced Gradients */
