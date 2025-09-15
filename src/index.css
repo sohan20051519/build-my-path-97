@@ -1,0 +1,360 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Material 3 + Neumorphism + Glassmorphism Design System
+All colors MUST be HSL for proper Material 3 dynamic theming
+*/
+
+@layer base {
+  :root {
+    /* Material 3 Surface Colors */
+    --background: 240 10% 98%;
+    --surface: 240 15% 96%;
+    --surface-container: 240 12% 94%;
+    --surface-container-high: 240 10% 90%;
+    --surface-container-highest: 240 8% 86%;
+    --surface-dim: 240 5% 87%;
+    --surface-bright: 240 20% 99%;
+    
+    /* Material 3 Content Colors */
+    --foreground: 240 15% 9%;
+    --on-surface: 240 15% 9%;
+    --on-surface-variant: 240 6% 46%;
+    --outline: 240 4% 63%;
+    --outline-variant: 240 6% 81%;
+
+    /* Material 3 Primary Colors - Dynamic Purple-Blue */
+    --primary: 258 89% 66%;
+    --primary-container: 258 100% 94%;
+    --on-primary: 0 0% 100%;
+    --on-primary-container: 258 100% 21%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Material 3 Secondary Colors */
+    --secondary: 268 25% 73%;
+    --secondary-container: 268 43% 91%;
+    --secondary-foreground: 268 100% 15%;
+    --on-secondary: 268 43% 25%;
+    --on-secondary-container: 268 43% 25%;
+
+    /* Material 3 Tertiary Colors */
+    --tertiary: 15 85% 70%;
+    --tertiary-container: 15 100% 94%;
+    --on-tertiary: 15 100% 25%;
+    --on-tertiary-container: 15 100% 15%;
+
+    /* Error Colors */
+    --destructive: 0 68% 56%;
+    --destructive-foreground: 0 0% 100%;
+    --error-container: 0 100% 95%;
+    --on-error-container: 0 65% 31%;
+
+    /* Legacy mappings for compatibility */
+    --card: var(--surface-container);
+    --card-foreground: var(--on-surface);
+    --popover: var(--surface-container-high);
+    --popover-foreground: var(--on-surface);
+    --muted: var(--surface-container);
+    --muted-foreground: var(--on-surface-variant);
+    --accent: var(--tertiary);
+    --accent-foreground: var(--on-tertiary);
+    --border: var(--outline-variant);
+    --input: var(--outline-variant);
+    --ring: var(--primary);
+
+    /* Neumorphism Colors */
+    --neu-base: 240 12% 94%;
+    --neu-light: 240 20% 98%;
+    --neu-dark: 240 8% 82%;
+    --neu-highlight: 0 0% 100%;
+    --neu-shadow: 240 25% 75%;
+
+    /* Glassmorphism */
+    --glass-bg: 240 15% 96% / 0.7;
+    --glass-border: 240 20% 99% / 0.2;
+    --glass-shadow: 240 25% 15% / 0.1;
+    --glass-backdrop-blur: blur(16px);
+
+    /* Material 3 Enhanced Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(258 89% 76%));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(268 35% 83%));
+    --gradient-tertiary: linear-gradient(135deg, hsl(var(--tertiary)), hsl(25 95% 80%));
+    --gradient-surface: linear-gradient(180deg, hsl(var(--surface-bright)), hsl(var(--surface-container)));
+    --gradient-glass: linear-gradient(135deg, hsl(240 20% 99% / 0.4), hsl(240 15% 96% / 0.2));
+    --gradient-neu: linear-gradient(145deg, hsl(var(--neu-light)), hsl(var(--neu-base)));
+
+    /* Material 3 Elevation Shadows */
+    --elevation-1: 0 1px 2px hsl(var(--primary) / 0.3), 0 1px 3px 1px hsl(var(--primary) / 0.15);
+    --elevation-2: 0 1px 2px hsl(var(--primary) / 0.3), 0 2px 6px 2px hsl(var(--primary) / 0.15);
+    --elevation-3: 0 1px 3px hsl(var(--primary) / 0.3), 0 4px 8px 3px hsl(var(--primary) / 0.15);
+    --elevation-4: 0 2px 3px hsl(var(--primary) / 0.3), 0 6px 10px 4px hsl(var(--primary) / 0.15);
+    --elevation-5: 0 4px 4px hsl(var(--primary) / 0.3), 0 8px 12px 6px hsl(var(--primary) / 0.15);
+
+    /* Neumorphic Shadows */
+    --neu-shadow-inset: inset 2px 2px 6px hsl(var(--neu-shadow)), inset -2px -2px 6px hsl(var(--neu-highlight));
+    --neu-shadow-outset: 3px 3px 8px hsl(var(--neu-shadow)), -3px -3px 8px hsl(var(--neu-highlight));
+    --neu-shadow-pressed: inset 3px 3px 8px hsl(var(--neu-shadow)), inset -1px -1px 4px hsl(var(--neu-highlight));
+    --neu-shadow-floating: 6px 6px 16px hsl(var(--neu-shadow)), -6px -6px 16px hsl(var(--neu-highlight)), 0 0 0 1px hsl(var(--primary) / 0.1);
+
+    /* Glassmorphic Shadows */
+    --glass-shadow-light: 0 8px 32px hsl(var(--glass-shadow));
+    --glass-shadow-medium: 0 16px 48px hsl(var(--glass-shadow)), 0 0 0 1px hsl(var(--glass-border));
+    --glass-shadow-strong: 0 24px 64px hsl(var(--glass-shadow)), 0 0 0 1px hsl(var(--glass-border));
+
+    /* Enhanced Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-fast: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-neu: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Material 3 Dark Surface Colors */
+    --background: 240 10% 6%;
+    --surface: 240 10% 10%;
+    --surface-container: 240 8% 12%;
+    --surface-container-high: 240 6% 17%;
+    --surface-container-highest: 240 4% 22%;
+    --surface-dim: 240 6% 6%;
+    --surface-bright: 240 5% 24%;
+    
+    /* Material 3 Dark Content Colors */
+    --foreground: 240 10% 90%;
+    --on-surface: 240 10% 90%;
+    --on-surface-variant: 240 5% 68%;
+    --outline: 240 4% 58%;
+    --outline-variant: 240 6% 30%;
+
+    /* Material 3 Dark Primary Colors */
+    --primary: 258 89% 76%;
+    --primary-container: 258 89% 30%;
+    --on-primary: 258 100% 10%;
+    --on-primary-container: 258 100% 90%;
+    --primary-foreground: 258 100% 10%;
+
+    /* Material 3 Dark Secondary Colors */
+    --secondary: 268 25% 83%;
+    --secondary-container: 268 25% 35%;
+    --secondary-foreground: 268 25% 15%;
+    --on-secondary: 268 25% 15%;
+    --on-secondary-container: 268 25% 90%;
+
+    /* Material 3 Dark Tertiary Colors */
+    --tertiary: 15 85% 80%;
+    --tertiary-container: 15 85% 35%;
+    --on-tertiary: 15 100% 15%;
+    --on-tertiary-container: 15 100% 90%;
+
+    /* Error Colors */
+    --destructive: 0 68% 66%;
+    --destructive-foreground: 0 0% 0%;
+    --error-container: 0 68% 25%;
+    --on-error-container: 0 100% 90%;
+
+    /* Legacy mappings for dark mode */
+    --card: var(--surface-container);
+    --card-foreground: var(--on-surface);
+    --popover: var(--surface-container-high);
+    --popover-foreground: var(--on-surface);
+    --muted: var(--surface-container);
+    --muted-foreground: var(--on-surface-variant);
+    --accent: var(--tertiary);
+    --accent-foreground: var(--on-tertiary);
+    --border: var(--outline-variant);
+    --input: var(--outline-variant);
+    --ring: var(--primary);
+
+    /* Dark Neumorphism Colors */
+    --neu-base: 240 8% 12%;
+    --neu-light: 240 10% 18%;
+    --neu-dark: 240 12% 8%;
+    --neu-highlight: 240 15% 25%;
+    --neu-shadow: 240 15% 4%;
+
+    /* Dark Glassmorphism */
+    --glass-bg: 240 10% 10% / 0.7;
+    --glass-border: 240 15% 25% / 0.2;
+    --glass-shadow: 240 25% 4% / 0.3;
+
+    /* Sidebar colors */
+    --sidebar-background: var(--surface-container);
+    --sidebar-foreground: var(--on-surface);
+    --sidebar-primary: var(--primary);
+    --sidebar-primary-foreground: var(--on-primary);
+    --sidebar-accent: var(--surface-container-high);
+    --sidebar-accent-foreground: var(--on-surface);
+    --sidebar-border: var(--outline-variant);
+    --sidebar-ring: var(--primary);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--surface-container));
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--outline));
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary));
+  }
+}
+
+@layer utilities {
+  /* Neumorphism Utilities */
+  .neu-inset {
+    background: hsl(var(--neu-base));
+    box-shadow: var(--neu-shadow-inset);
+  }
+  
+  .neu-outset {
+    background: hsl(var(--neu-base));
+    box-shadow: var(--neu-shadow-outset);
+  }
+  
+  .neu-pressed {
+    background: hsl(var(--neu-base));
+    box-shadow: var(--neu-shadow-pressed);
+    transform: scale(0.98);
+  }
+  
+  .neu-floating {
+    background: hsl(var(--neu-base));
+    box-shadow: var(--neu-shadow-floating);
+  }
+
+  /* Glassmorphism Utilities */
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: var(--glass-backdrop-blur);
+    -webkit-backdrop-filter: var(--glass-backdrop-blur);
+    border: 1px solid hsl(var(--glass-border));
+  }
+  
+  .glass-light {
+    box-shadow: var(--glass-shadow-light);
+  }
+  
+  .glass-medium {
+    box-shadow: var(--glass-shadow-medium);
+  }
+  
+  .glass-strong {
+    box-shadow: var(--glass-shadow-strong);
+  }
+
+  /* Material 3 Elevation Utilities */
+  .elevation-1 { box-shadow: var(--elevation-1); }
+  .elevation-2 { box-shadow: var(--elevation-2); }
+  .elevation-3 { box-shadow: var(--elevation-3); }
+  .elevation-4 { box-shadow: var(--elevation-4); }
+  .elevation-5 { box-shadow: var(--elevation-5); }
+
+  /* Enhanced Animation Utilities */
+  .transition-neu {
+    transition: var(--transition-neu);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  .transition-bounce {
+    transition: var(--transition-bounce);
+  }
+
+  /* Interactive States */
+  .interactive {
+    @apply transition-smooth hover:elevation-2 active:scale-[0.98];
+  }
+  
+  .interactive-neu {
+    @apply transition-neu hover:neu-floating active:neu-pressed;
+  }
+  
+  .interactive-glass {
+    @apply transition-smooth hover:glass-medium active:scale-[0.98];
+  }
+
+  /* Typography Utilities */
+  .text-display-large {
+    font-size: 3.5rem;
+    font-weight: 400;
+    line-height: 1.12;
+    letter-spacing: -0.025em;
+  }
+  
+  .text-display-medium {
+    font-size: 2.8125rem;
+    font-weight: 400;
+    line-height: 1.16;
+    letter-spacing: 0;
+  }
+  
+  .text-display-small {
+    font-size: 2.25rem;
+    font-weight: 400;
+    line-height: 1.22;
+    letter-spacing: 0;
+  }
+  
+  .text-headline-large {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0;
+  }
+  
+  .text-headline-medium {
+    font-size: 1.75rem;
+    font-weight: 400;
+    line-height: 1.29;
+    letter-spacing: 0;
+  }
+  
+  .text-headline-small {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.33;
+    letter-spacing: 0;
+  }
+}
