@@ -8,8 +8,8 @@ export const Header = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center space-x-3 interactive group">
-            <div className="neu-floating bg-gradient-primary rounded-lg p-2 group-hover:neu-outset transition-neu shadow-elevation-2">
-              <FileText className="w-6 h-6 text-white" />
+            <div className="neu-outset bg-neu-base rounded-lg p-2 group-hover:neu-floating transition-neu">
+              <FileText className="w-6 h-6 text-primary" />
             </div>
             <div>
               <h1 className="text-xl font-bold text-on-surface">ResumeBuilder</h1>
