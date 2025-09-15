@@ -90,8 +90,8 @@ export default function LandingPage() {
               <Card key={index} variant="neu" className="text-center interactive-neu p-8">
                 <CardContent className="p-0">
                   <div className="flex justify-center mb-4">
-                    <div className="bg-primary rounded-full p-4 shadow-elevation-3">
-                      <stat.icon className="w-8 h-8 text-primary-foreground" />
+                    <div className="neu-outset bg-neu-base rounded-full p-4 shadow-elevation-3">
+                      <stat.icon className="w-8 h-8 text-primary" />
                     </div>
                   </div>
                   <div className="text-display-small font-bold text-on-surface mb-2">{stat.value}</div>
@@ -119,8 +119,8 @@ export default function LandingPage() {
             {features.map((feature, index) => (
               <Card key={index} variant="glass" className="interactive-glass group">
                 <CardContent className="p-8 text-center">
-                  <div className="bg-primary rounded-full p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center shadow-elevation-3 hover:shadow-elevation-4 transition-smooth">
-                    <feature.icon className="w-8 h-8 text-primary-foreground" />
+                  <div className="neu-outset bg-neu-base rounded-full p-4 w-16 h-16 mx-auto mb-6 flex items-center justify-center group-hover:neu-floating transition-neu">
+                    <feature.icon className="w-8 h-8 text-primary" />
                   </div>
                   <h3 className="text-headline-small font-semibold text-on-surface mb-4">
                     {feature.title}
@@ -167,7 +167,7 @@ export default function LandingPage() {
             ].map((item, index) => (
               <Card key={index} variant="elevated" className="text-center interactive p-8">
                 <CardContent className="p-0">
-                  <div className="bg-tertiary rounded-full w-20 h-20 flex items-center justify-center text-on-tertiary text-2xl font-bold mx-auto mb-6 shadow-elevation-4">
+                  <div className="neu-outset bg-neu-base rounded-full w-20 h-20 flex items-center justify-center text-primary text-2xl font-bold mx-auto mb-6 hover:neu-floating transition-neu">
                     {item.step}
                   </div>
                   <h3 className="text-headline-small font-semibold text-on-surface mb-4">
@@ -227,8 +227,8 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <div className="bg-primary rounded-lg p-3 shadow-elevation-2">
-                <FileText className="w-6 h-6 text-primary-foreground" />
+              <div className="neu-outset bg-neu-base rounded-lg p-3">
+                <FileText className="w-6 h-6 text-primary" />
               </div>
               <div>
                 <h3 className="text-lg font-bold text-on-surface">ResumeBuilder</h3>
