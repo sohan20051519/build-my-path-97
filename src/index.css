@@ -63,17 +63,17 @@ All colors MUST be HSL for proper Material 3 dynamic theming
     --input: var(--outline-variant);
     --ring: var(--primary);
 
-    /* Neumorphism Colors */
+    /* Neumorphism Colors - Enhanced Contrast */
     --neu-base: 240 12% 94%;
     --neu-light: 240 20% 98%;
-    --neu-dark: 240 8% 82%;
+    --neu-dark: 240 8% 75%;
     --neu-highlight: 0 0% 100%;
-    --neu-shadow: 240 25% 75%;
+    --neu-shadow: 240 35% 65%;
 
-    /* Glassmorphism */
-    --glass-bg: 240 15% 96% / 0.7;
-    --glass-border: 240 20% 99% / 0.2;
-    --glass-shadow: 240 25% 15% / 0.1;
+    /* Glassmorphism - Enhanced Visibility */
+    --glass-bg: 240 15% 96% / 0.9;
+    --glass-border: 240 20% 85% / 0.3;
+    --glass-shadow: 240 25% 15% / 0.2;
     --glass-backdrop-blur: blur(16px);
 
     /* Material 3 Enhanced Gradients */
@@ -91,11 +91,11 @@ All colors MUST be HSL for proper Material 3 dynamic theming
     --elevation-4: 0 2px 3px hsl(var(--primary) / 0.3), 0 6px 10px 4px hsl(var(--primary) / 0.15);
     --elevation-5: 0 4px 4px hsl(var(--primary) / 0.3), 0 8px 12px 6px hsl(var(--primary) / 0.15);
 
-    /* Neumorphic Shadows */
-    --neu-shadow-inset: inset 2px 2px 6px hsl(var(--neu-shadow)), inset -2px -2px 6px hsl(var(--neu-highlight));
-    --neu-shadow-outset: 3px 3px 8px hsl(var(--neu-shadow)), -3px -3px 8px hsl(var(--neu-highlight));
-    --neu-shadow-pressed: inset 3px 3px 8px hsl(var(--neu-shadow)), inset -1px -1px 4px hsl(var(--neu-highlight));
-    --neu-shadow-floating: 6px 6px 16px hsl(var(--neu-shadow)), -6px -6px 16px hsl(var(--neu-highlight)), 0 0 0 1px hsl(var(--primary) / 0.1);
+    /* Neumorphic Shadows - Enhanced Depth */
+    --neu-shadow-inset: inset 3px 3px 8px hsl(var(--neu-shadow)), inset -3px -3px 8px hsl(var(--neu-highlight));
+    --neu-shadow-outset: 4px 4px 12px hsl(var(--neu-shadow)), -4px -4px 12px hsl(var(--neu-highlight));
+    --neu-shadow-pressed: inset 4px 4px 12px hsl(var(--neu-shadow)), inset -2px -2px 6px hsl(var(--neu-highlight));
+    --neu-shadow-floating: 8px 8px 20px hsl(var(--neu-shadow)), -8px -8px 20px hsl(var(--neu-highlight)), 0 0 0 1px hsl(var(--primary) / 0.15);
 
     /* Glassmorphic Shadows */
     --glass-shadow-light: 0 8px 32px hsl(var(--glass-shadow));
@@ -183,17 +183,17 @@ All colors MUST be HSL for proper Material 3 dynamic theming
     --input: var(--outline-variant);
     --ring: var(--primary);
 
-    /* Dark Neumorphism Colors */
-    --neu-base: 240 8% 12%;
-    --neu-light: 240 10% 18%;
+    /* Dark Neumorphism Colors - Enhanced Contrast */
+    --neu-base: 240 8% 15%;
+    --neu-light: 240 10% 25%;
     --neu-dark: 240 12% 8%;
-    --neu-highlight: 240 15% 25%;
-    --neu-shadow: 240 15% 4%;
+    --neu-highlight: 240 15% 35%;
+    --neu-shadow: 240 25% 4%;
 
-    /* Dark Glassmorphism */
-    --glass-bg: 240 10% 10% / 0.7;
-    --glass-border: 240 15% 25% / 0.2;
-    --glass-shadow: 240 25% 4% / 0.3;
+    /* Dark Glassmorphism - Enhanced Visibility */
+    --glass-bg: 240 10% 15% / 0.9;
+    --glass-border: 240 15% 35% / 0.4;
+    --glass-shadow: 240 25% 4% / 0.4;
 
     /* Sidebar colors */
     --sidebar-background: var(--surface-container);
