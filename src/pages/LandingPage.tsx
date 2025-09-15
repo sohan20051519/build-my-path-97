@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Textarea } from "@/components/ui/textarea";
 import { Header } from "@/components/layout/Header";
+import { useState } from "react";
 import { 
   FileText, 
   Download, 
@@ -11,10 +14,31 @@ import {
   Trophy,
   ArrowRight,
   CheckCircle,
-  Star
+  Star,
+  Upload,
+  Bot,
+  Sparkles,
+  Send
 } from "lucide-react";
 
 export default function LandingPage() {
+  const [showAIChat, setShowAIChat] = useState(false);
+  const [aiPrompt, setAiPrompt] = useState("");
+  const [isGenerating, setIsGenerating] = useState(false);
+  const handleAIGenerate = async () => {
+    if (!aiPrompt.trim()) return;
+    
+    setIsGenerating(true);
+    // Simulate AI processing
+    setTimeout(() => {
+      setIsGenerating(false);
+      setShowAIChat(false);
+      // Navigate to builder with AI-generated content
+      // This would integrate with actual AI service
+      window.location.href = "/builder?ai-generated=true";
+    }, 2000);
+  };
+
   const features = [
     {
       icon: Zap,
@@ -66,18 +90,26 @@ export default function LandingPage() {
             Stand out from the crowd and land your dream job.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="neu" size="xl" className="interactive-neu">
+              <Upload className="w-5 h-5 mr-2" />
+              Upload & Re-design
+            </Button>
             <Link to="/builder">
-              <Button variant="filled" size="xl" className="interactive">
+              <Button variant="neu" size="xl" className="interactive-neu">
                 <FileText className="w-5 h-5 mr-2" />
-                Start Building Free
-                <ArrowRight className="w-5 h-5 ml-2" />
+                Build from Scratch
               </Button>
             </Link>
-            <Link to="/templates">
-              <Button variant="glass-primary" size="xl" className="interactive-glass">
-                Browse Templates
-              </Button>
-            </Link>
+            <Button 
+              variant="neu" 
+              size="xl" 
+              className="interactive-neu"
+              onClick={() => setShowAIChat(true)}
+            >
+              <Bot className="w-5 h-5 mr-2" />
+              Build with AI
+              <Sparkles className="w-5 h-5 ml-2" />
+            </Button>
           </div>
         </div>
       </section>
@@ -195,13 +227,26 @@ export default function LandingPage() {
                 Join thousands of professionals who have successfully landed their dream jobs
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button variant="neu" size="xl" className="interactive-neu">
+                  <Upload className="w-5 h-5 mr-2" />
+                  Upload & Re-design
+                </Button>
                 <Link to="/builder">
-                  <Button variant="filled" size="xl" className="interactive">
+                  <Button variant="neu" size="xl" className="interactive-neu">
                     <FileText className="w-5 h-5 mr-2" />
-                    Start Building Now
-                    <ArrowRight className="w-5 h-5 ml-2" />
+                    Build from Scratch
                   </Button>
                 </Link>
+                <Button 
+                  variant="neu" 
+                  size="xl" 
+                  className="interactive-neu"
+                  onClick={() => setShowAIChat(true)}
+                >
+                  <Bot className="w-5 h-5 mr-2" />
+                  Build with AI
+                  <Sparkles className="w-5 h-5 ml-2" />
+                </Button>
               </div>
               <div className="flex items-center justify-center mt-8 space-x-6 text-sm text-on-surface-variant">
                 <div className="flex items-center">
@@ -252,6 +297,61 @@ export default function LandingPage() {
           </div>
         </div>
       </footer>
+
+      {/* AI Chat Dialog */}
+      <Dialog open={showAIChat} onOpenChange={setShowAIChat}>
+        <DialogContent className="sm:max-w-md neu-outset bg-neu-base border-0">
+          <DialogHeader>
+            <DialogTitle className="flex items-center text-on-surface">
+              <Bot className="w-5 h-5 mr-2 text-primary" />
+              Build with AI
+              <Sparkles className="w-4 h-4 ml-2 text-tertiary" />
+            </DialogTitle>
+          </DialogHeader>
+          <div className="space-y-4">
+            <p className="text-on-surface-variant">
+              Describe what kind of resume you want to create and I'll help you build it instantly.
+            </p>
+            <Textarea
+              placeholder="E.g., 'I need a modern software engineer resume with focus on React and Node.js experience, clean design, ATS-friendly format...'"
+              value={aiPrompt}
+              onChange={(e) => setAiPrompt(e.target.value)}
+              className="neu-inset bg-neu-base border-0 min-h-[120px] resize-none text-on-surface placeholder:text-on-surface-variant"
+              disabled={isGenerating}
+            />
+            <div className="flex gap-3">
+              <Button 
+                variant="neu" 
+                size="sm" 
+                onClick={() => setShowAIChat(false)}
+                disabled={isGenerating}
+                className="interactive-neu flex-1"
+              >
+                Cancel
+              </Button>
+              <Button 
+                variant="neu" 
+                size="sm" 
+                onClick={handleAIGenerate}
+                disabled={!aiPrompt.trim() || isGenerating}
+                className="interactive-neu flex-1"
+              >
+                {isGenerating ? (
+                  <>
+                    <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin mr-2" />
+                    Generating...
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4 mr-2" />
+                    Generate Resume
+                  </>
+                )}
+              </Button>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
