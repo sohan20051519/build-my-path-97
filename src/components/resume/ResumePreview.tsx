@@ -1,9 +1,7 @@
 import { ResumeData } from "@/types/resume";
 import { Template } from "@/types/template";
-import { ClassicTemplate } from "./templates/Classic";
-import { ModernTemplate } from "./templates/Modern";
-import { ExecutiveTemplate } from "./templates/Executive";
-import { TechnicalTemplate } from "./templates/Technical";
+import { TimelessProfessionalTemplate } from "./templates/TimelessProfessional";
+import { MinimalistExpertTemplate } from "./templates/MinimalistExpert";
 
 interface ResumePreviewProps {
   data: ResumeData;
@@ -11,15 +9,16 @@ interface ResumePreviewProps {
 }
 
 export const ResumePreview = ({ data, template }: ResumePreviewProps) => {
-  switch (template?.category) {
-    case "modern":
-      return <ModernTemplate data={data} />;
-    case "executive":
-      return <ExecutiveTemplate data={data} />;
-    case "technical":
-      return <TechnicalTemplate data={data} />;
-    case "classic":
+  switch (template?.id) {
+    case "timeless-professional":
+      return <TimelessProfessionalTemplate data={data} />;
+    case "minimalist-expert":
+      return <MinimalistExpertTemplate data={data} />;
     default:
-      return <ClassicTemplate data={data} />;
+      return (
+        <div className="p-4 text-center">
+          <p>Please select a template to see a preview.</p>
+        </div>
+      );
   }
 };

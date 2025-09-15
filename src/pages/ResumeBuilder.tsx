@@ -15,6 +15,8 @@ import { Link } from "react-router-dom";
 import { ResumeData } from "@/types/resume";
 import { useToast } from "@/hooks/use-toast";
 import { templates } from "@/data/templates";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import { ClassicPdf, TimelessProfessionalPdf, MinimalistExpertPdf } from "@/components/resume/templates/PdfTemplates";
 
 const initialResumeData: ResumeData = {
   personalInfo: {
@@ -38,7 +40,7 @@ export default function ResumeBuilder() {
   const { toast } = useToast();
 
   const templateId = searchParams.get("template");
-  const selectedTemplate = templateId ? templates.find(t => t.id === templateId) : null;
+  const selectedTemplate = templateId ? templates.find(t => t.id === templateId) : templates[0];
 
   const updatePersonalInfo = (personalInfo: ResumeData["personalInfo"]) => {
     setResumeData((prev) => ({ ...prev, personalInfo }));
@@ -60,11 +62,16 @@ export default function ResumeBuilder() {
     setResumeData((prev) => ({ ...prev, skills }));
   };
 
-  const handleDownload = () => {
-    toast({
-      title: "Download feature coming soon!",
-      description: "PDF export functionality will be available in the next version.",
-    });
+
+  const getPdfTemplate = (templateId: string | undefined, data: ResumeData) => {
+    switch (templateId) {
+      case "timeless-professional":
+        return <TimelessProfessionalPdf data={data} />;
+      case "minimalist-expert":
+        return <MinimalistExpertPdf data={data} />;
+      default:
+        return <ClassicPdf data={data} />;
+    }
   };
 
   const sections = [
@@ -202,15 +209,17 @@ export default function ResumeBuilder() {
                         See your resume update in real-time
                       </p>
                     </div>
-                    <Button
-                      onClick={handleDownload}
-                      variant="neu"
-                      size="sm"
-                      className="interactive-neu"
+                    <PDFDownloadLink
+                      document={getPdfTemplate(selectedTemplate?.id, resumeData)}
+                      fileName={`${selectedTemplate?.name.toLowerCase().replace(" ", "-")}-resume.pdf`}
                     >
-                      <Download className="w-4 h-4 mr-2" />
-                      <span className="hidden sm:inline">Download</span>
-                    </Button>
+                      {({ loading }) => (
+                        <Button variant="neu" size="sm" className="interactive-neu" disabled={loading}>
+                          <Download className="w-4 h-4 mr-2" />
+                          {loading ? 'Generating...' : 'Download'}
+                        </Button>
+                      )}
+                    </PDFDownloadLink>
                   </div>
                 </CardHeader>
                 <CardContent className="p-0">
